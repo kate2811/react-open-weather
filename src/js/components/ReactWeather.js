@@ -64,6 +64,11 @@ class ReactWeather extends React.Component {
   componentDidMount() {
     this.getForecastData();
   }
+  componentWillReceiveProps(nextProps, nextContext) {
+    if (nextProps.lat !== this.props.lat || nextProps.lon !== this.props.lon  || nextProps.lang !== this.props.lang) {
+      this.getForecastData()
+    }
+  }
   getForecastData() {
     const self = this;
     const params = self._getParams();
